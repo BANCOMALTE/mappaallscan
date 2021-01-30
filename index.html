@@ -89,7 +89,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
     for (var i in data) {
       var row = data[i];
-	var band;
+	    var band;
 	    var iconemarker;
 	    var colorebande;
 	    var defaultmarkericon = L.icon({
@@ -153,9 +153,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
       marker.bindTooltip("<span>" + row.eNb + ":" + row.Settori + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
      
    markers.addLayer(marker);
-	   
-
-        map.addLayer(markers);
+   map.addLayer(markers);
        
 
  }
