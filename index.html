@@ -153,7 +153,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
 	     var markerbts = L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: defaultmarkericon }).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI:</b> " + row.Settoritotali + "<br />").openPopup();
       markerbts.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
    markers.addLayer(marker); //Aggiungo il layer della mappa a quello dei cluster
-/* markers.addLayer(markerbts); */
+ markers.addLayer(markerbts); 
         map.addLayer(markers);  }
 
   });
