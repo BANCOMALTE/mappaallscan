@@ -158,7 +158,13 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
         map.addLayer(markers);
        }
 
+ }
 
+  });
+	  $.get('./data.csv', function(csvString) {
+
+    // Use PapaParse to convert string to array of objects
+    var data = Papa.parse(csvString, {header: true, dynamicTyping: true}).data;
 	  for (var i in data) {
       var row = data[i];
 	
