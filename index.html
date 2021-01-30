@@ -161,31 +161,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
  }
 
   });
-	  $.get('./data.csv', function(csvString) {
-
-    // Use PapaParse to convert string to array of objects
-    var data = Papa.parse(csvString, {header: true, dynamicTyping: true}).data;
-	  for (var i in data) {
-      var row = data[i];
 	
-	    var defaultmarkericon = L.icon({
-    iconUrl: 'default.png',
-   iconSize:     [26, 42], // size of the icon
-   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
-   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
-});
-	      
-      var markerbts =  L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: defaultmarkericon}).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI:</b> " + row.Settoritotali + "<br />").openPopup();
-      markerbts.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
- 
-	    markers.addLayer(markerbts);//Aggiungo il layer della mappa a quello dei cluster
-
-     
-
-        map.addLayer(markers);
-    }
-
-  });
 	  //Creazione del pulsante per eliminare il marker di ricerca
         let btn = document.createElement('button');
         btn.innerText = 'Delete Marker';
