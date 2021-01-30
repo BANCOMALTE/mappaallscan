@@ -88,7 +88,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
     for (var i in data) {
       var row = data[i];
-	var iconemarker = iconemarker = L.icon({
+	var iconemarker = L.icon({
     iconUrl: 'searchbell.png',
    iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
 });
@@ -100,9 +100,9 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
 });
       var marker = L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI TOTALI:</b> " + row.Settoritotali + "<br />").openPopup();
       marker.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
-	    var markeri = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarkeri}).bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORE:</b> " + row.Settori + "<br /><b>CELL ID:</b> " + row.CellID + "<br />").openPopup();
+	    var markeri = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarkeri}) /* .bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORE:</b> " + row.Settori + "<br /><b>CELL ID:</b> " + row.CellID + "<br />").openPopup();
       markeri.bindTooltip("<span>" + row.eNb + " : " + row.Settori + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
-	    
+	    */
    markers.addLayer(marker);
 	    markers.addLayer(markeri);//Aggiungo il layer della mappa a quello dei cluster
 
