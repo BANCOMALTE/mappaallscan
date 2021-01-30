@@ -158,7 +158,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
         map.addLayer(markers);
        }
 
-  });
+
 	  for (var i in data) {
       var row = data[i];
 	
@@ -168,7 +168,7 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-	      }
+	      
       var markerbts =  L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: defaultmarkericon}).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI:</b> " + row.Settoritotali + "<br />").openPopup();
       markerbts.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
    markers.addLayer(marker);
