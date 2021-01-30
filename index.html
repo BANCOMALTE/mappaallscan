@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MAPPA TIM</title>
+  <title>MAPPA WINDTRE ALLSCAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
 
@@ -88,83 +88,62 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
     for (var i in data) {
       var row = data[i];
-	var frequenze;
+	var band;
 	    var iconemarker;
-if( row.Bande == "~B20~") { frequenze = "B20"; iconemarker = L.icon({
-    iconUrl: 'b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B3~")  {frequenze = "B3"; iconemarker = L.icon({
+	    var colorebande;
+	        if (row.Settori == 0 || row.Settori == 1 || row.Settori == 2 || row.Settori == 3 || row.Settori == 4 || row.Settori == 5 ) {
+                         band = "B3";
+			  colorebande = "green";
+                         iconemarker = L.icon({
     iconUrl: 'b3.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if(row.Bande == "~B1~")  { frequenze = "B1"; iconemarker = L.icon({
+                 } else if (row.Settori == 6 || row.Settori == 7 || row.Settori == 8 || row.Settori == 9 || row.Settori == 10 || row.Settori == 11) {
+                     band = "B20";
+			  colorebande = "blue";
+                     iconemarker = L.icon({
+    iconUrl: 'b20.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+});
+                 } else if (row.Settori == 12 || row.Settori == 13 || row.Settori == 14 || row.Settori == 15 || row.Settori == 16 || row.Settori == 17) {
+                     band = "B7";
+			 colorebande = "magenta";
+                     iconemarker = L.icon({
+    iconUrl: 'b7.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+});
+                 } else if  (row.Settori == 18 || row.Settori == 19 || row.Settori == 20 || row.Settori == 21 || row.Settori == 22 || row.Settori == 23) {
+                     band = "B1";  colorebande = "orange"; iconemarker = L.icon({
     iconUrl: 'b1.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B1~~B3~")  { frequenze = "B1,B3"; iconemarker = L.icon({
-    iconUrl: 'b1b3.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B1~~B20~")  {frequenze = "B1,B20"; iconemarker = L.icon({
-    iconUrl: 'b1b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B1~~B3~~B20~")  {frequenze = "B1,B3,B20"; iconemarker = L.icon({
-    iconUrl: 'b1b3b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B1~~B3~~B20~")  { frequenze = "B7,B1,B3,B20"; iconemarker = L.icon({
-    iconUrl: 'b7b1b3b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B1~~B3~~B20~~B32~")  { frequenze = "B7,B1,B3,B20"; iconemarker = L.icon({
-    iconUrl: 'b7b1b3b20b32.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B1~~B3~")  {frequenze = "B7,B1,B3"; iconemarker = L.icon({
-    iconUrl: 'b7b1b3.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B3~~B20~")  { frequenze = "B7,B3,B20"; iconemarker = L.icon({
-    iconUrl: 'b7b3b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B1~~B20~")  { frequenze = "B7,B1,B20"; iconemarker = L.icon({
-    iconUrl: 'b7b1b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B3~~B20~")  { frequenze = "B3,B20"; iconemarker = L.icon({
-    iconUrl: 'b3b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B3~~B32~")  { frequenze = "B3,B32"; iconemarker = L.icon({
-    iconUrl: 'b3b32.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B20~")  { frequenze = "B7,B20"; iconemarker = L.icon({
-    iconUrl: 'b7b20.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B3~")  { frequenze = "B7,B3"; iconemarker = L.icon({
-    iconUrl: 'b7b32.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B7~~B1~")  { frequenze = "B7,B1"; iconemarker = L.icon({
-    iconUrl: 'b7b1.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B20~~B32~")  { frequenze = "B20,B32"; iconemarker = L.icon({
-    iconUrl: 'b20b32.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } else if(row.Bande == "~B1~~B20~~B32~")  { frequenze = "B3,B32"; iconemarker = L.icon({
-    iconUrl: 'b1b20b32.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
-});
-                 } 
-      var marker = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>NOME SITO:</b> " + row.Nomesito + "<br /><b>BANDE:</b> " + frequenze + "<br /><b>PRIMO RILEVAMENTO:</b> " + row.Primorilevamento + "<br />").openPopup();
-      marker.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+}); } else if (row.Settori == 24 || row.Settori == 25 || row.Settori == 26 || row.Settori == 27 || row.Settori == 28 || row.Settori == 29) {
+		     
+	                band = "B38";  colorebande = "darkblue"; iconemarker = L.icon({
+    iconUrl: 'b38.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+});	     
+		     
+		     
+		     
+		     
+		     } else { band = "";  iconemarker = L.icon({
+    iconUrl: 'default.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+});} 
+      var marker = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORE:</b> " + row.Settori + "<br /><b>BANDE:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
+      marker.bindTooltip("<span>" + row.eNb + ":" + row.Settori + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
 	    
    markers.addLayer(marker); //Aggiungo il layer della mappa a quello dei cluster
 
