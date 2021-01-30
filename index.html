@@ -92,9 +92,11 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
     iconUrl: 'searchbell.png',
    iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
 });
-	    var iconemarkeri = iconemarker = L.icon({
+	    var iconemarkeri = L.icon({
     iconUrl: 'default.png',
-   iconSize: [38, 38],iconAnchor:  [19, 38],popupAnchor:  [0, -34] // point from which the popup should open relative to the iconAnchor
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
       var marker = L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI TOTALI:</b> " + row.Settoritotali + "<br />").openPopup();
       marker.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
