@@ -78,7 +78,7 @@ L.control.layers({
 
   // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
 var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
-var markersbts = L.markerClusterGroup({disableClusteringAtZoom: 16});
+
   // Read markers data from data.csv
   $.get('./data.csv', function(csvString) {
 
@@ -151,12 +151,13 @@ var markersbts = L.markerClusterGroup({disableClusteringAtZoom: 16});
 });} 
       var marker = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORE:</b> " + row.Settori + "<br /><b>BANDE:</b> " + band.fontcolor(colorebande) + "<br /><b>CELL ID:</b> " + row.CellID + "<br />").openPopup();
       marker.bindTooltip("<span>" + row.eNb + ":" + row.Settori + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
-	     var markerbts = L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: defaultmarkericon }).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI:</b> " + row.Settoritotali + "<br />").openPopup();
+      var markerbts = L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: defaultmarkericon }).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI:</b> " + row.Settoritotali + "<br />").openPopup();
       markerbts.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
-   markers.addLayer(marker); //Aggiungo il layer della mappa a quello dei cluster
- markersbts.addLayer(markerbts); 
+   markers.addLayer(marker);
+	    markers.addLayer(markerbts);//Aggiungo il layer della mappa a quello dei cluster
+
         map.addLayer(markers);
-    map.addLayer(markersbts); }
+    }
 
   });
 	  //Creazione del pulsante per eliminare il marker di ricerca
