@@ -91,6 +91,12 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
 	var band;
 	    var iconemarker;
 	    var colorebande;
+	    var defaultmarkericon = L.icon({
+    iconUrl: 'default.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+});
 	        if (row.Settori == 0 || row.Settori == 1 || row.Settori == 2 || row.Settori == 3 || row.Settori == 4 || row.Settori == 5 ) {
                          band = "B3";
 			  colorebande = "green";
@@ -142,11 +148,12 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });} 
-      var marker = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORE:</b> " + row.Settori + "<br /><b>BANDE:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
+      var marker = L.marker([row.Latitudine, row.Longitudine], {icon: iconemarker}).bindPopup("<b>LAT:</b> " + row.Latitudine + "<br /><b>LON:</b> " + row.Longitudine + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORE:</b> " + row.Settori + "<br /><b>BANDE:</b> " + band.fontcolor(colorebande) + "<br /><b>CELL ID:</b> " + row.CellID + "<br />").openPopup();
       marker.bindTooltip("<span>" + row.eNb + ":" + row.Settori + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
-	    
+	     var markerbts = L.marker([row.Latitudinetriangolazione, row.Longitudinetriangolazione], {icon: defaultmarkericon }).bindPopup("<b>LAT:</b> " + row.Latitudinetriangolazione + "<br /><b>LON:</b> " + row.Longitudinetriangolazione + "<br /><b>ENODEB:</b> " + row.eNb + "<br /><b>SETTORI:</b> " + row.Settoritotali + "<br />").openPopup();
+      markerbts.bindTooltip("<span>" + row.eNb + "</span>" , {permanent: true, direction: 'bottom'}).openTooltip();
    markers.addLayer(marker); //Aggiungo il layer della mappa a quello dei cluster
-
+markers.addLayer(markerbts);
         map.addLayer(markers);  }
 
   });
