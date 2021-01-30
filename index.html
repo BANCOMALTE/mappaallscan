@@ -78,6 +78,7 @@ L.control.layers({
 
   // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
 var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
+	  var markersi = L.markerClusterGroup({disableClusteringAtZoom: 16});
   // Read markers data from data.csv
   $.get('./data.csv', function(csvString) {
 
@@ -105,9 +106,10 @@ var markers = L.markerClusterGroup({disableClusteringAtZoom: 16});
       markersettori.bindTooltip("<span>" + row.eNb + " : " + row.Settori + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
 	    
    markers.addLayer(markerbts);
-	    /*markers.addLayer(markersettori);//Aggiungo il layer della mappa a quello dei cluster */
+   markersi.addLayer(markersettori);//Aggiungo il layer della mappa a quello dei cluster 
 
-        map.addLayer(markers);  }
+        map.addLayer(markers); 
+     map.addLayer(markersi);}
 
   });
 	  //Creazione del pulsante per eliminare il marker di ricerca
